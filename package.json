@@ -1,28 +1,22 @@
 {
-  "name": "nexora",
-  "private": true,
+  "name": "@nexora/mvp",
   "version": "0.3.0",
-  "description": "NEXORA MVP 0.3: ecosistema educativo híbrido para estudiantes universitarios de El Salvador",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "private": true,
+  "description": "NEXORA MVP 0.3: servidor ejecutable sin dependencias (Node >= 22.18) con el sitio público pre-renderizado y la primera experiencia funcional.",
+  "type": "module",
   "engines": {
-    "node": ">=20.11"
+    "node": ">=22.18"
   },
   "scripts": {
-    "dev": "npm run dev -w @nexora/web",
-    "build": "npm run build -w @nexora/web",
-    "lint": "npm run lint -w @nexora/web",
-    "typecheck": "npm run typecheck -w @nexora/web && npm run typecheck -w @nexora/db",
-    "test": "node --test --no-warnings --experimental-strip-types \"apps/web/tests/*.test.ts\" \"apps/mvp/tests/*.test.mjs\"",
-    "db:generate": "npm run generate -w @nexora/db",
-    "db:migrate": "npm run migrate -w @nexora/db",
-    "db:seed": "npm run seed -w @nexora/db",
-    "db:up": "docker compose up -d postgres redis",
-    "mvp": "node apps/mvp/server.mjs",
-    "mvp:build": "node tools/mvp/build-public.mjs",
-    "mvp:e2e": "node tools/mvp/e2e.mjs"
+    "start": "node server.mjs",
+    "build:public": "node ../../tools/mvp/build-public.mjs",
+    "test:e2e": "node ../../tools/mvp/e2e.mjs"
   },
-  "type": "module"
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.3.0",
+    "playwright": "^1.48.0"
+  }
 }
